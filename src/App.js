@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const api = {
@@ -18,7 +18,7 @@ function App(){
       .then(result => {
         setQuery('');
         setWeather(result);
-        console.log(weather);
+        console.log(result);
       });
     }
   }
@@ -48,21 +48,25 @@ function App(){
           onKeyPress={search}
           />
         </div>
-        <div className="location-box">
-          <div className="location">New York City, US</div>
-          <div className="date">{dateBuilder(new Date())}</div>
-          <div className="weather-box">
-            <div className="temp">
-              15℃
+        {(typeof weather.main != "undefined") ? (
+          <div>
+            <div className="location-box">
+              <div className="location">{weather.name},{weather.sys.country}</div>
+              <div className="date">{dateBuilder(new Date())}</div>
+              <div className="weather-box">
+                <div className="temp">
+                  {Math.round(weather.main.temp)}℃
+                </div>
+                <div className="weather">Sunny</div>
+              </div>
             </div>
-            <div className="weather">Sunny</div>
           </div>
-        </div>
+          ):('')}
         
 
       </main>
     </div>
   );
-};
+}
 
 export default App;
