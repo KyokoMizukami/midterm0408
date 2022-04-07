@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.app {
+  background-position: bottom;
+  background-size: cover;
+  background-image: url('./assets/mountain.jpeg');
+  transition: 0.4 ease-out;
+}
+
+.app.warm {
+  background-image: url('./assets/summer.jpeg');
+}
+
+main {
+  min-height: 100vh;
+}
